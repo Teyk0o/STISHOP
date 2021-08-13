@@ -1,0 +1,587 @@
+body {
+    height: 5000px;
+}
+
+.cercle {
+    background-color: #EFEFEF;
+    border-radius: 50%;
+    width: 580px;
+    height: 580px;
+    display: inline-block;
+    position: absolute;
+}
+
+.sectionTitle {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-size: 40px;
+    color: #FC8C04;
+}
+
+.sectionDescription {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+.networkLogo {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.backgroundArticle {
+    background-color: #EFEFEF;
+    border-radius: 10%;
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    position: absolute;
+}
+
+.article {
+    border: 1px solid gray;
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+}
+
+.articleInfo {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+}
+
+.buyArticleButton {
+    width: 300px;
+    height: 50px;
+    background-color: #FC8C04;
+    color: white;
+    font-size: 22px;
+    position: absolute;
+    border: 2px solid #FC8C04;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.buyArticleButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.fieldForm {
+    text-align: right;
+    background-color: #EFEFEF;
+    border: 1px solid gray;
+    color: gray;
+    position: absolute;
+    width: 442px;
+    height: 35px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#headerMenu {
+    position: relative;
+}
+
+#logo {
+    width: 180px;
+    position: absolute;
+    left: 50px;
+}
+
+.headerButton {
+    position: absolute;
+    top: 38px;
+    background: none;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.headerButton:hover {
+    text-decoration: underline;
+}
+
+#shopButton {
+    left: 49%;
+}
+
+#mainButton {
+    left: 43%;
+}
+
+#communityButton {
+    left: 55%;
+}
+
+#panier {
+    position: absolute;
+    width: 30px;
+    left: 86%;
+    top: 38px;
+}
+
+#connexionAccessButton {
+    position: absolute;
+    top: 37px;
+    left: 90%;
+    background: white;
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    width: 130px;
+    height: 35px;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+#profilAccessButton {
+    position: absolute;
+    top: 37px;
+    left: 90%;
+    background: white;
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    width: 130px;
+    height: 35px;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    text-align: center;
+}
+
+#profilAccessButton:hover {
+    background: #FC8C04;
+    color: white;
+}
+
+#connexionAccessButton:hover {
+    background: #FC8C04;
+    color: white;
+}
+
+#accueilMenu {
+    position: relative;
+}
+
+#mainSlogan {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-size: 50px;
+    top: 120px;
+    left: 5%;
+}
+
+#secondSlogan {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    top: 374px;
+    left: 5%;
+}
+
+#illustrationAccueil {
+    position: absolute;
+    left: 58%;
+    top: 99px;
+}
+
+.accueilButton {
+    position: absolute;
+    background: none;
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+#buyButton {
+    left: 5%;
+    top: 436px;
+    width: 133px;
+    height: 50px;
+    background-color: #FC8C04;
+    color: white;
+    font-size: 22px;
+}
+
+#buyButton:hover {
+    background-color: white;
+    color: black;
+}
+
+#proposButton {
+    left: 14%;
+    top: 436px;
+    width: 133px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+}
+
+#proposButton:hover {
+    background-color: #FC8C04;
+    color: white;
+}
+
+#proposSection {
+    position: relative;
+}
+
+#illustration2Cercle {
+    top: 664px;
+    left: 2%;
+}
+
+#illustrationPropos {
+    position: absolute;
+    top: 569px;
+    left: 3%;
+}
+
+#proposTitle {
+    top: 767px;
+    left: 44%;
+}
+
+#proposDescription {
+    top: 842px;
+    left: 44%;
+}
+
+#proposSubDescription {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    top: 1071px;
+    left: 44%;
+}
+
+#networkSection {
+    position: relative;
+}
+
+#illustration3Cercle {
+    top: 1316px;
+    left: 61%;
+}
+
+#illustrationNetwork {
+    position: absolute;
+    top: 1267px;
+    left: 65%;
+    width: 400px;
+    height: auto;
+}
+
+#networkTitle {
+    top: 1368px;
+    left: 30%;
+}
+
+#networkDescription {
+    top: 1431px;
+    left: 20%;
+    text-align: right;
+}
+
+#instagramLogo {
+    top: 1548px;
+    left: 49%;
+}
+
+#twitterLogo {
+    top: 1609px;
+    left: 49%;
+}
+
+#discordLogo {
+    top: 1673px;
+    left: 49%;
+}
+
+#instagramAccount {
+    top: 1515px;
+    left: 37%;
+}
+
+#twitterHashtag {
+    top: 1579px;
+    left: 44%;
+}
+
+#discordLink {
+    top: 1636px;
+    left: 29.7%;
+}
+
+#stickerSection {
+    position: relative;
+}
+
+#illustration4Cercle {
+    top: 2000px;
+    left: 2%;
+}
+
+#illustrationSticker {
+    position: absolute;
+    top: 2100px;
+    left: 6%;
+}
+
+#stickerTitle {
+    top: 2100px;
+    left: 44%;
+}
+
+#stickerDescription {
+    top: 2200px;
+    left: 44%;
+}
+
+#article1 {
+    top: 2679px;
+    left: 18%;
+}
+
+#article2 {
+    top: 2679px;
+    left: 41%;
+}
+
+#article3 {
+    top: 2679px;
+    left: 64%;
+}
+
+#article4 {
+    top: 3218px;
+    left: 18%;
+}
+
+#articleImg1 {
+    top: 2700px;
+    left: 19%;
+}
+
+#articleImg2 {
+    top: 2700px;
+    left: 42%;
+}
+
+#articleImg3 {
+    top: 2700px;
+    left: 65%;
+}
+
+#articleImg4 {
+    top: 3247px;
+    left: 19%;
+}
+
+#buyArticle1 {
+    top: 3092px;
+    left: 18%;
+}
+
+#buyArticle2 {
+    top: 3092px;
+    left: 41%;
+}
+
+#buyArticle3 {
+    top: 3092px;
+    left: 64%;
+}
+
+#buyArticle4 {
+    top: 3642px;
+    left: 18%;
+}
+
+#moreStickerSoon {
+    position: absolute;
+    top: 3323px;
+    left: 48%;
+}
+
+#articleInfo1 {
+    top: 3000px;
+    left: 19%;
+}
+
+#articleInfo2 {
+    top: 3000px;
+    left: 42%;
+}
+
+#articleInfo3 {
+    top: 3000px;
+    left: 67%;
+}
+
+#articleInfo4 {
+    top: 3535px;
+    left: 19%;
+}
+
+#communitySection {
+    position: relative;
+}
+
+#illustration5Cercle {
+    top: 3781px;
+    left: 61%;
+}
+
+#illustration5 {
+    position: absolute;
+    top: 3732px;
+    left: 59%;
+    width: 615px;
+    height: auto;
+}
+
+#communityTitle {
+    top: 3866px;
+    left: 30%;
+}
+
+#communityDescription {
+    top: 3950px;
+    left: 23%;
+    text-align: right;
+}
+
+#communitySubDescription {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    top: 4076px;
+    left: 40%;
+}
+
+#communityForm {
+    position: absolute;
+    top: 4100px;
+    left: 30%;
+}
+
+#nameField {
+    top: 27px;
+    left: 60px;
+}
+
+#mailField {
+    top: 80px;
+    left: 60px;
+}
+
+#locationField {
+    top: 136px;
+    left: 60px;
+}
+
+#instagramField {
+    top: 193px;
+    left: 60px;
+}
+
+#checkForm {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 248px;
+    left: 57px;
+}
+
+#fieldSubDescription {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    top: 4340px;
+    left: 35%;
+}
+
+#sendPhoto {
+    top: 4387px;
+    left: 437px;
+}
+
+#sendPhotoTitle {
+    top: 4386px;
+    left: 60%;
+}
+
+#sendPhotoDescription {
+    top: 4489px;
+    left: 55%;
+    text-align: right;
+}
+
+#sendPhotoImg {
+    position: absolute;
+    top: 4500px;
+    left: 32%;
+    width: 180px;
+    height: 200px;
+    cursor: pointer;
+}
+
+#sendPhotoButton {
+    background-color: #FC8C04;
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    color: white;
+    position: absolute;
+    top: 4744px;
+    left: 32%;
+    width: 180px;
+    height: 41px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+#sendPhotoButton:hover {
+    background-color: white;
+    color: black;
+}
+
+#footer {
+    position: relative;
+}
+
+#footerText {
+    position: absolute;
+    left: 35%;
+    top: 4950px;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+}
+
+#footerTextAll {
+    position: absolute;
+    left: 35%;
+    top: 874px;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+}
+

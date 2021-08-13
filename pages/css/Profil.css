@@ -1,0 +1,290 @@
+body {
+    height: 98%;
+}
+
+.fieldFormProfil {
+    text-align: left;
+    background-color: #EFEFEF;
+    border: 1px solid gray;
+    color: gray;
+    position: absolute;
+    width: 442px;
+    height: 35px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.fieldNameProfil {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+    color: black;
+    font-weight: 200;
+    left: 25%;
+}
+
+.navBarSection {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-size: 30px;
+    color: black;
+    font-weight: 400;
+    left: 6%;
+}
+
+.navBarIcon {
+    position: absolute;
+    left: 1%;
+}
+
+.navBarPointer {
+    cursor: pointer;
+}
+
+#navBar {
+    position: relative;
+}
+
+#profilTitle {
+    font-size: 52px;
+    top: 129px;
+    left: 3%;
+}
+
+#horizontalLine {
+    position: absolute;
+    top: 262px;
+    left: 1%;
+    opacity: 50%;
+}
+
+#lockIcon {
+    top: 297px;
+}
+
+#confidentiality {
+    top: 277px;
+}
+
+#securityIcon {
+    top: 381px;
+    left: 0.6%;
+}
+
+#security {
+    top: 362px;
+}
+
+#paycheckIcon {
+    top: 468px;
+}
+
+#payements {
+    top: 450px;
+}
+
+#connexionIcon {
+    top: 563px;
+    left: 0.7%;
+}
+
+#connexions {
+    top: 541px;
+}
+
+#saleIcon {
+    top: 650px;
+    left: 0.4%;
+}
+
+#recentsales {
+    top: 631px;
+}
+
+#verticalLine {
+    position: absolute;
+    top: 306px;
+    left: 21%;
+    opacity: 50%;
+}
+
+#confidentialitySection {
+    position: relative;
+}
+
+#confidentialityTitle {
+    top: 189px;
+    left: 25%;
+    font-size: 55px;
+    font-weight: 400;
+}
+
+#confidentialityForm {
+    position: absolute;
+    top: 346px;
+    left: 25%;
+}
+
+#firstnameField {
+    top: 80px;
+}
+
+#birthdateField {
+    top: 160px;
+}
+
+#adressField {
+    top: 240px;
+}
+
+#emailField {
+    top: 320px;
+}
+
+#nameText {
+    top: 290px;
+}
+
+#firstnameText {
+    top: 370px;
+}
+
+#birthdateText {
+    top: 450px;
+}
+
+#adressText {
+    top: 530px;
+}
+
+#mailText {
+    top: 610px;
+}
+
+#illustration7Cercle {
+    left: 60%;
+    top: 200px;
+}
+
+#illustration7 {
+    position: absolute;
+    left: 59%;
+    top: 140px;
+    width: 566px;
+    height: auto;
+}
+
+#illustration8 {
+    position: absolute;
+    left: 64%;
+    top: 140px;
+    width: 449px;
+    height: auto;
+}
+
+#securityForm {
+    position: absolute;
+    top: 346px;
+    left: 25%;
+}
+
+#buttonPassword {
+    position: absolute;
+    top: 212px;
+    left: 100px;
+    background-color: #FC8C04;
+    color: white;
+    border: 2px solid #FC8C04;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+    height: 38px;
+    width: 208px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+#buttonPassword:hover {
+    background-color: white;
+    color: black;
+}
+
+#paymentMethod {
+    top: 455px;
+}
+
+#illustration9 {
+    position: absolute;
+    left: 57%;
+    top: 140px;
+    width: 612px;
+    height: auto;
+}
+
+.paymentMethodAdd {
+    display: inline-block;
+    position: absolute;
+    border-radius: 10px;
+    height: 51px;
+    width: 161px;
+    transition-duration: 0.4s;
+}
+
+#paypalAdd {
+    background-color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    color: white;
+    top: 374px;
+    left: 24%;
+    cursor: pointer;
+}
+
+#paypalAdd:hover {
+    background-color: white;
+    color: black;
+}
+
+#cbAdd {
+    background-color: #50b550;;
+    border: 2px solid #50b550;;
+    color: white;
+    top: 374px;
+    left: 34%;
+    cursor: not-allowed;
+}
+
+#connexionNav {
+    cursor: not-allowed;
+}
+
+#illustration10 {
+    position: absolute;
+    left: 64%;
+    top: 216px;
+    width: 389px;
+    height: auto;
+}
+
+#deconnexionButton {
+    position: absolute;
+    top: 749px;
+    left: 5%;
+}
+
+#decoButton {
+    background-color: indianred;
+    color: white;
+    border: 2px solid indianred;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+    width: 191px;
+    height: 46px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+#decoButton:hover {
+    background-color: white;
+    color: black;
+}

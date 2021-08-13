@@ -1,0 +1,130 @@
+body {
+    height: 98%;
+}
+
+#pageContent {
+    position: relative;
+}
+
+#illustration6Cercle {
+    top: 177px;
+    left: -5%;
+    z-index: -1;
+}
+
+#illustration6 {
+    position: absolute;
+    top: 275px;
+    left: 0%;
+    width: 454px;
+    height: auto;
+}
+
+#separateLine {
+    position: absolute;
+    top: 200px;
+    left: 56%;
+    opacity: 50%;
+}
+
+#inscriptionContent {
+    position: relative;
+}
+
+#inscriptionTitle {
+    top: 227px;
+    left: 27%;
+    font-size: 40px;
+}
+
+#inscriptionForm {
+    position: absolute;
+    left: 27%;
+    top: 345px;
+}
+
+#usernameField {
+    text-align: left;
+}
+
+#mailFieldSignUp {
+    top: 55px;
+    text-align: left;
+}
+
+#passwordField {
+    top: 110px;
+    text-align: left;
+}
+
+#confirmPasswordField {
+    top: 165px;
+    text-align: left;
+}
+
+#signUpButton {
+    background-color: #FC8C04;
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    display: inline-block;
+    width: 278px;
+    height: 40px;
+    color: white;
+    position: absolute;
+    top: 230px;
+    left: 72px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    font-size: 20px;
+}
+
+#signUpButton:hover {
+    background-color: white;
+    color: black;
+}
+
+#connexionContent {
+    position: relative;
+}
+
+#connexionTitle {
+    top: 227px;
+    left: 63%;
+    font-size: 40px;
+}
+
+#connexionForm {
+    position: absolute;
+    left: 63%;
+    top: 345px;
+}
+
+#mailFieldSignIn {
+    text-align: left;
+}
+
+#passwordFieldSignIn {
+    top: 55px;
+    text-align: left;
+}
+
+#signInButton {
+    background-color: #FC8C04;
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    display: inline-block;
+    width: 278px;
+    height: 40px;
+    color: white;
+    position: absolute;
+    top: 115px;
+    left: 80px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    font-size: 20px;
+}
+
+#signInButton:hover {
+    background-color: white;
+    color: black;
+}

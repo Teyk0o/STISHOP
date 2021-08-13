@@ -1,0 +1,29 @@
+body {
+    overflow: hidden; /* Hide scrollbars */
+}
+
+#illustration11Cercle {
+    top: 215px;
+    left: 2%;
+    z-index: -1;
+}
+
+#payment {
+    background-color: #FC8C04;
+    border-radius: 10px;
+    display: inline-block;
+    border: 2px solid #FC8C04;
+    color: white;
+    position: absolute;
+    top: 779px;
+    left: 82%;
+    height: 53px;
+    width: 179px;
+    transition-duration: 0.4s;
+    font-size: 20px;
+}
+
+#payment:hover {
+    background-color: white;
+    color: black;
+}
