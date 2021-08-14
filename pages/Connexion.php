@@ -79,7 +79,7 @@ if (isset($_POST['connexionForm'])) {
     <meta charset="UTF-8">
     <meta name="description" content="La boutique des préférée STI2D">
     <title>STI2SHOP - LA boutique des STI2D</title>
-    <link rel="icon" href="../img/favicon.ico">
+      <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
       <link rel="stylesheet" href="../pages/css/Main.css">
     <link rel="stylesheet" href="../pages/css/Connexion.css">
     <script type="text/javascript" src="../scripts/Connexion.js"></script>

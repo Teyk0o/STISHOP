@@ -2,13 +2,16 @@
 
 session_start();
 
-$bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
+/**$bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');*/
+
+include 'admin/pageControl.php';
+
+$pageControlVar = new pageControl();
+$pageControlVar->shopOpenned();
 
 if (isset($_SESSION['id'])) {
     $connected = 0;
-} else {
-    $connected = 1;
-}
+} else $connected = 1;
 
 if (isset($_POST['connexionAButton'])) {
     header("Location: pages/Connexion.php");
@@ -39,7 +42,7 @@ if (isset($_POST['goToQRCode'])) {
         <meta charset="UTF-8">
         <meta name="description" content="La boutique des préférée STI2D">
         <title>STI2SHOP - LA boutique des STI2D</title>
-        <link rel="icon" href="img/favicon.ico">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
         <link rel="stylesheet" href="pages/css/Main.css">
         <script type="text/javascript" src="scripts/Main.js"></script>
     </head>
@@ -51,7 +54,7 @@ if (isset($_POST['goToQRCode'])) {
             <button onclick="goToMain()" class="headerButton" id="mainButton">Accueil</button>
             <button onclick="goToShop()" class="headerButton" id="shopButton">Boutique</button>
             <button onclick="goToContact()" class="headerButton" id="communityButton">Communauté</button>
-            <a href="<?php header("Location: pages/shopping-cart.php?id=".$_SESSION['id']); ?>">
+            <a>
                 <img src="img/shopping-cart.png" id="panier">
             </a>
             <form method="post" id="connexionButton" style="display: block">

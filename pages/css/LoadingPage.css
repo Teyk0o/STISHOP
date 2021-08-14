@@ -1,0 +1,33 @@
+#bePatientText {
+    position: relative;
+}
+
+#mainText {
+    position: absolute;
+    top: 137px;
+    left: 37%;
+    font-family: "Arial", sans-serif;
+}
+
+#countdowDiv {
+    position: relative;
+}
+
+#countdown {
+    position: absolute;
+    top: 161px;
+    left: 40%;
+    font-family: "Arial", sans-serif;
+}
+
+#footerImage {
+    position: relative;
+}
+
+#footerLogo {
+    position: absolute;
+    top: 628px;
+    left: 47%;
+    height: auto;
+    width: 110px;
+}

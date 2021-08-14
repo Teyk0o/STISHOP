@@ -22,7 +22,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
         <meta charset="UTF-8">
         <meta name="description" content="La boutique des préférée STI2D">
         <title>STI2SHOP - LA boutique des STI2D</title>
-        <link rel="icon" href="../img/favicon.ico">
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
         <link rel="stylesheet" href="../pages/css/Main.css">
         <link rel="stylesheet" href="../pages/css/Profil.css">
         <script type="text/javascript" src="../scripts/Profil.js"></script>

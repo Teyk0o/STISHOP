@@ -16,13 +16,19 @@ if (isset($_POST['connexionAButton'])) {
 if (isset($_POST['profilButton'])) {
     header("Location: ../pages/Profil.php?id=".$_SESSION['id']);
 }
+
+if (isset($_GET['id']) AND $_GET['id'] > 0) {
+    $getid = intval($_GET['id']);
+    $reqcart = $bdd->prepare('SELECT * FROM shoppingcart WHERE userId = ?');
+    $reqcart->execute(array($getid));
+    $cartinfo = $reqcart->fetch();
 ?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="La boutique des préférée STI2D">
     <title>STI2SHOP - LA boutique des STI2D</title>
-    <link rel="icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
     <link rel="stylesheet" href="../pages/css/Main.css">
     <link rel="stylesheet" href="../pages/css/shopCart.css">
 </head>
@@ -50,10 +56,8 @@ if (isset($_POST['profilButton'])) {
     <form method="post">
         <input type="submit" name="payments" value="Paiement" id="payment">
     </form>
-    <?php $shopCart = $bdd->prepare("select * from shoppingcart where userId = '{$_SESSION[ "id" ]}'" );
-    $shopCart->execute();
-    $result = $shopCart->fetchAll(PDO::FETCH_NUM);
-    echo $result['articles']
+    <?php
+    echo $cartinfo['articles']
     ?>
 
 </div>
@@ -62,6 +66,7 @@ if (isset($_POST['profilButton'])) {
 </div>
 </body>
 <?php
+}
 if ($connected == 1) { ?>
     <script type="text/javascript">document.getElementById('connexionButton').style.display = 'block';</script>
     <script type="text/javascript">document.getElementById('profilButton').style.display = 'none';</script>
