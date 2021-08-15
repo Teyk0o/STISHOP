@@ -2,7 +2,7 @@
 
 session_start();
 
-/**$bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');*/
+$bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 
 include 'admin/pageControl.php';
 
@@ -18,7 +18,7 @@ if (isset($_POST['connexionAButton'])) {
 }
 
 if (isset($_POST['profilButton'])) {
-    header("Location: pages/Profil.php?id=".$_SESSION['id']);
+    header("Location: pages/shopping-cart.php?id=".$_SESSION['id']);
 }
 
 if (isset($_POST['goToPatrols'])) {

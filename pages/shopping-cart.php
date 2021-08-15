@@ -18,10 +18,11 @@ if (isset($_POST['profilButton'])) {
 }
 
 if (isset($_GET['id']) AND $_GET['id'] > 0) {
-    $getid = intval($_GET['id']);
-    $reqcart = $bdd->prepare('SELECT * FROM shoppingcart WHERE userId = ?');
-    $reqcart->execute(array($getid));
-    $cartinfo = $reqcart->fetch();
+    if ($_GET['id'] === $_SESSION['id']) {
+        $getid = intval($_GET['id']);
+        $reqcart = $bdd->prepare('SELECT * FROM shoppingcart WHERE userId = ?');
+        $reqcart->execute(array($getid));
+        $cartinfo = $reqcart->fetch();
 ?>
 <html lang="fr">
 <head>
@@ -56,16 +57,76 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
     <form method="post">
         <input type="submit" name="payments" value="Paiement" id="payment">
     </form>
-    <?php
-    echo $cartinfo['articles']
-    ?>
+</div>
+<div id="actualCart">
+    <ul id="articleName">
+            <?php
+            $articleList = $bdd->prepare('SELECT * FROM shoppingcart WHERE userId = :parameter');
+            $articleList->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+            $articleList->execute();
 
+            while ($row = $articleList->fetch(PDO::FETCH_NUM)) {
+                foreach ($row as $articleList)
+                    echo  '<span class="CartClass">';
+                    echo '<li class="liPosition">' . $row[1] . $row[2] . $row[3] . $row[4] .'</li>';
+            }
+            ?>
+    </ul>
+<!--    <ul id="articleQuantity">-->
+<!--        --><?php
+//        $response = $bdd->prepare('SELECT quantity FROM shoppingcart WHERE userId = :parameter');
+//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+//        $response->execute();
+//
+//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
+//            foreach ($cartArticles as $field)
+//            echo '<li class="liPositionQuantity">' . "x" . $field . '</li>';
+//        }
+//        ?>
+<!--    </ul>-->
+<!--    <ul id="articleQuality">-->
+<!--        --><?php
+//        $response = $bdd->prepare('SELECT quality FROM shoppingcart WHERE userId = :parameter');
+//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+//        $response->execute();
+//
+//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
+//            foreach ($cartArticles as $field)
+//                echo '<li class="liPositionQuality">' . $field . " | " .'</li>';
+//        }
+//        ?>
+<!--    </ul>-->
+<!--    <ul id="articleColor">-->
+<!--        --><?php
+//        $response = $bdd->prepare('SELECT color FROM shoppingcart WHERE userId = :parameter');
+//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+//        $response->execute();
+//
+//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
+//            foreach ($cartArticles as $field)
+//                echo '<li class="liPositionColor">' . $field . '</li>';
+//        }
+//        ?>
+<!--    </ul>-->
+<!--    <ul id="articleImg">-->
+<!--        --><?php
+//        $response = $bdd->prepare('SELECT img FROM shoppingcart WHERE userId = :parameter');
+//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+//        $response->execute();
+//
+//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
+//            foreach ($cartArticles as $field)
+//                echo '<li class="liPositionImg">' . '<img class="imgClass" src="' . $field . '">' . '</li>';
+//        }
+//        ?>
+<!--    </ul>-->
 </div>
 <div id="footer">
     <h4 id="footerText">STI2SHOP COPYRIGHT © 2021 - ALL RIGHTS RESERVED - MENTIONS LEGALES</h4>
 </div>
 </body>
 <?php
+}
 }
 if ($connected == 1) { ?>
     <script type="text/javascript">document.getElementById('connexionButton').style.display = 'block';</script>

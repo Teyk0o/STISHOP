@@ -47,8 +47,9 @@ if (isset($_POST['saveToCart'])) {
     $quantityArt = $_SESSION['quantity'];
     $qualityArt = $_SESSION['quality'];
     $userId = $_SESSION['id'];
-    $insterart = $bdd->prepare("INSERT INTO shoppingcart(userId, articles, quantity, quality, color) VALUES(?, ?, ?, ?, ?)");
-    $insterart->execute(array($userId, $articles, $quantityArt, $qualityArt, $color));
+    $img = "../img/STI2D-RICKY.png";
+    $insterart = $bdd->prepare("INSERT INTO shoppingcart(userId, articles, quantity, quality, color, img) VALUES(?, ?, ?, ?, ?, ?)");
+    $insterart->execute(array($userId, $articles, $quantityArt, $qualityArt, $color, $img));
 
 }
 ?>

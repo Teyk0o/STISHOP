@@ -27,3 +27,65 @@ body {
     background-color: white;
     color: black;
 }
+
+#actualCart {
+    position: relative;
+    top: -683px;
+    left: 48%;
+    font-family: "Arial", sans-serif;
+}
+
+ul li {
+    position: relative;
+    margin-bottom: 60px;
+    list-style-type: none;
+    margin-top: 12px;
+}
+
+.cartClass {
+    background-color: #EFEFEF;
+    display: inline-block;
+    border-radius: 10px;
+    width: 600px;
+    height: 50px;
+}
+
+.liPosition {
+    margin-left: 70px;
+}
+
+.liPositionQuantity {
+    margin-top: 72px;
+    position: absolute;
+    left: 90%;
+    top: -106px;
+}
+
+.liPositionQuality {
+    margin-top: 72px;
+    position: relative;
+    left: 42%;
+    top: -200px;
+    color: #908f8f;
+}
+
+.liPositionColor {
+    margin-top: 72px;
+    position: relative;
+    left: 55%;
+    top: -290px;
+    color: #908f8f;
+}
+
+.liPositionImg {
+    margin-top: 72px;
+    position: relative;
+    left: 2%;
+    top: -386px;
+    color: #908f8f;
+}
+
+.imgClass {
+    width: 36px;
+    height: auto;
+}
