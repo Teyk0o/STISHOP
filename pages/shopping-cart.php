@@ -17,6 +17,13 @@ if (isset($_POST['profilButton'])) {
     header("Location: ../pages/Profil.php?id=".$_SESSION['id']);
 }
 
+if (isset($_POST['deleteRow'])) {
+    $liToDelete = $_POST['deleteRow'];
+
+    $deleteDB = $bdd->prepare('DELETE FROM shoppingcart WHERE id = ?');
+    $deleteDB->execute(array($liToDelete));
+}
+
 if (isset($_GET['id']) AND $_GET['id'] > 0) {
     if ($_GET['id'] === $_SESSION['id']) {
         $getid = intval($_GET['id']);
@@ -66,60 +73,29 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
             $articleList->execute();
 
             while ($row = $articleList->fetch(PDO::FETCH_NUM)) {
-                foreach ($row as $articleList)
-                    echo  '<span class="CartClass">';
-                    echo '<li class="liPosition">' . $row[1] . $row[2] . $row[3] . $row[4] .'</li>';
+               echo '<li class="articleList" id="article'. 'n°' . $row[7] .'">';
+               echo '<div class="nameArticle" id="nameArticle'. $row[7] .'">'. $row[1] .'</div>';
+               echo  '<span class="CartClass" id="background'. $row[7] .'"></span>';
+               echo '<img id="imgClass'. $row[7] .'" src="'. $row[5] .'" class="imgClass">';
+               echo '<div class="optionArticle" id="optionArticle'. $row[7] .'" >'. $row[4] . ' | ' . $row[3] .'</div>';
+               echo '<div class="quantityArticle" id="quantityArticle'. $row[7] .'" >'. 'x' . $row[2] .'</div>';
+               echo '<div class="priceArticle" id="priceArticle'. $row[7] .'" >'. $row[6] . '€' .'</div>';
+               echo '<form method="POST" class="deleteRowForm" id="deleteRowForm'. $row[7] .'"><input type="submit" name="deleteRow" id="deleteRow" value="'. $row[7] .'" alt="'. $row[7] .'"></form>';
+               echo '</li>';
             }
             ?>
     </ul>
-<!--    <ul id="articleQuantity">-->
-<!--        --><?php
-//        $response = $bdd->prepare('SELECT quantity FROM shoppingcart WHERE userId = :parameter');
-//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
-//        $response->execute();
-//
-//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
-//            foreach ($cartArticles as $field)
-//            echo '<li class="liPositionQuantity">' . "x" . $field . '</li>';
-//        }
-//        ?>
-<!--    </ul>-->
-<!--    <ul id="articleQuality">-->
-<!--        --><?php
-//        $response = $bdd->prepare('SELECT quality FROM shoppingcart WHERE userId = :parameter');
-//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
-//        $response->execute();
-//
-//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
-//            foreach ($cartArticles as $field)
-//                echo '<li class="liPositionQuality">' . $field . " | " .'</li>';
-//        }
-//        ?>
-<!--    </ul>-->
-<!--    <ul id="articleColor">-->
-<!--        --><?php
-//        $response = $bdd->prepare('SELECT color FROM shoppingcart WHERE userId = :parameter');
-//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
-//        $response->execute();
-//
-//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
-//            foreach ($cartArticles as $field)
-//                echo '<li class="liPositionColor">' . $field . '</li>';
-//        }
-//        ?>
-<!--    </ul>-->
-<!--    <ul id="articleImg">-->
-<!--        --><?php
-//        $response = $bdd->prepare('SELECT img FROM shoppingcart WHERE userId = :parameter');
-//        $response->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
-//        $response->execute();
-//
-//        while ($cartArticles = $response->fetch(PDO::FETCH_ASSOC)) {
-//            foreach ($cartArticles as $field)
-//                echo '<li class="liPositionImg">' . '<img class="imgClass" src="' . $field . '">' . '</li>';
-//        }
-//        ?>
-<!--    </ul>-->
+    <div id="totalPrice">
+        <?php
+        $articleList = $bdd->prepare('SELECT SUM(price) AS value_sum FROM shoppingcart WHERE userId = :parameter');
+        $articleList->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+        $articleList->execute();
+
+        $totalPrice = $articleList->fetch(PDO::FETCH_ASSOC);
+        $total = $totalPrice['value_sum'];
+        echo 'Prix Total : '. $total .'€' .'';
+        ?>
+    </div>
 </div>
 <div id="footer">
     <h4 id="footerText">STI2SHOP COPYRIGHT © 2021 - ALL RIGHTS RESERVED - MENTIONS LEGALES</h4>

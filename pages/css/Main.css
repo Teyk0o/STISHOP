@@ -571,7 +571,6 @@ body {
     position: absolute;
     left: 35%;
     top: 4950px;
-    cursor: pointer;
     font-family: "Arial", sans-serif;
     font-size: 15px;
 }
@@ -580,7 +579,6 @@ body {
     position: absolute;
     left: 35%;
     top: 874px;
-    cursor: pointer;
     font-family: "Arial", sans-serif;
     font-size: 15px;
 }

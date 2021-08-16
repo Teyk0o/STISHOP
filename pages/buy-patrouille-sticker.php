@@ -26,31 +26,22 @@ if (isset($_POST['profilButton'])) {
 if (isset($_POST['setConfiguration'])) {
     if ($quality == "Prenium") {
         $price = $price + 5.00;
+        $_SESSION['price'] = $price;
         $_SESSION['quality'] = "Prenium";
     } elseif ($quality == "Normal") {
         $_SESSION['quality'] = "Normal";
     }
     if ($quantity == "100") {
         $price = $price + 2.00;
+        $_SESSION['price'] = $price;
         $_SESSION['quantity'] = "100";
     } elseif ($quantity == "200") {
         $price = $price + 4.00;
+        $_SESSION['price'] = $price;
         $_SESSION['quantity'] = "200";
     } elseif ($quantity == "50") {
         $_SESSION['quantity'] = "50";
     }
-}
-
-if (isset($_POST['saveToCart'])) {
-    $color = "Blanc";
-    $articles = "sti2dPatrols";
-    $quantityArt = $_SESSION['quantity'];
-    $qualityArt = $_SESSION['quality'];
-    $userId = $_SESSION['id'];
-    $img = "../img/STI2D-PATROUILLE.png";
-    $insterart = $bdd->prepare("INSERT INTO shoppingcart(userId, articles, quantity, quality, color, img) VALUES(?, ?, ?, ?, ?, ?)");
-    $insterart->execute(array($userId, $articles, $quantityArt, $qualityArt, $color, $img));
-
 }
 ?>
 <html>
@@ -119,6 +110,20 @@ if (isset($_POST['saveToCart'])) {
         <script type="text/javascript">document.getElementById('connexionButton').style.display = 'none';</script>
         <script type="text/javascript">document.getElementById('profilButton').style.display = 'block';</script>
         <?php
+    }
+
+    if (isset($_POST['saveToCart'])) {
+        $color = "Blanc";
+        $articles = "sti2dPatrols";
+        $quantityArt = $_SESSION['quantity'];
+        $qualityArt = $_SESSION['quality'];
+        $userId = $_SESSION['id'];
+        $img = "../img/STI2D-PATROUILLE.png";
+        $insterart = $bdd->prepare("INSERT INTO shoppingcart(userId, articles, quantity, quality, color, img , price) VALUES(?, ?, ?, ?, ?, ?, ?)");
+        $insterart->execute(array($userId, $articles, $quantityArt, $qualityArt, $color, $img, $_SESSION['price']));
+        $_SESSION['price'] = 5.63;
+        $_SESSION['quality'] = "Normal";
+        $_SESSION['quantity'] = 50;
     }
     ?>
 </html>

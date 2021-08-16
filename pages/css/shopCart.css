@@ -16,7 +16,7 @@ body {
     color: white;
     position: absolute;
     top: 779px;
-    left: 82%;
+    left: 85%;
     height: 53px;
     width: 179px;
     transition-duration: 0.4s;
@@ -39,7 +39,7 @@ ul li {
     position: relative;
     margin-bottom: 60px;
     list-style-type: none;
-    margin-top: 12px;
+    margin-top: -130px;
 }
 
 .cartClass {
@@ -48,10 +48,8 @@ ul li {
     border-radius: 10px;
     width: 600px;
     height: 50px;
-}
-
-.liPosition {
-    margin-left: 70px;
+    position: relative;
+    z-index: -1;
 }
 
 .liPositionQuantity {
@@ -86,6 +84,68 @@ ul li {
 }
 
 .imgClass {
+    position: relative;
     width: 36px;
     height: auto;
+    top: -6px;
+    left: -31%;
+}
+
+.optionArticle {
+    position: relative;
+    top: -37px;
+    left: 11%;
+    color: #908f8f;
+}
+
+.quantityArticle {
+    position: relative;
+    top: -54px;
+    left: 21%;
+}
+
+.priceArticle {
+    position: relative;
+    top: -71px;
+    left: 28%;
+}
+
+#deleteRow {
+    background: url("../../img/bingray.png") center no-repeat;
+    background-size: 30px;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -96px;
+    left: 33%;
+    cursor: pointer;
+    color: rgba(117, 190, 218, 0.0);
+}
+
+#deleteRow:hover {
+    background: url("../../img/binorange.png") center no-repeat;
+    background-size: 30px;
+}
+
+.nameArticle {
+    position: relative;
+    top: 35px;
+    left: 4%;
+}
+
+#footerText {
+    position: absolute;
+    left: 35%;
+    top: -203px;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+}
+
+#totalPrice {
+    font-family: "Arial", sans-serif;
+    font-size: 25px;
+    position: absolute;
+    top: 510px;
+    left: 36%;
 }
