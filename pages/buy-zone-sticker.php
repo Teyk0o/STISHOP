@@ -29,6 +29,7 @@ if (isset($_POST['setConfiguration'])) {
         $_SESSION['price'] = $price;
         $_SESSION['quality'] = "Prenium";
     } elseif ($quality == "Normal") {
+        $_SESSION['price'] = $price;
         $_SESSION['quality'] = "Normal";
     }
     if ($quantity == "100") {
@@ -40,6 +41,7 @@ if (isset($_POST['setConfiguration'])) {
         $_SESSION['price'] = $price;
         $_SESSION['quantity'] = "200";
     } elseif ($quantity == "50") {
+        $_SESSION['price'] = $price;
         $_SESSION['quantity'] = "50";
     }
 }
@@ -62,7 +64,7 @@ if (isset($_POST['saveToCart'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="La boutique des préférée STI2D">
-    <title>STI2SHOP - LA boutique des STI2D</title>
+    <title>STI2SHOP - Nos stickers</title>
     <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
     <link rel="stylesheet" href="../pages/css/Main.css">
     <link rel="stylesheet" href="../pages/css/Shop.css">

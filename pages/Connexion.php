@@ -61,6 +61,9 @@ if (isset($_POST['connexionForm'])) {
                 $_SESSION['id'] = $userinfo['id'];
                 $_SESSION['username'] = $userinfo['username'];
                 $_SESSION['mail'] = $userinfo['mail'];
+                $_SESSION['price'] = 5.63;
+                $_SESSION['quality'] = "Normal";
+                $_SESSION['quantity'] = 50;
                 header("Location: Profil.php?id=".$_SESSION['id']);
             } else {
                 $erreur = "Cet utilisateur n'existe pas.";
@@ -78,7 +81,7 @@ if (isset($_POST['connexionForm'])) {
   <head>
     <meta charset="UTF-8">
     <meta name="description" content="La boutique des préférée STI2D">
-    <title>STI2SHOP - LA boutique des STI2D</title>
+    <title>STI2SHOP - Connexion</title>
       <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
       <link rel="stylesheet" href="../pages/css/Main.css">
     <link rel="stylesheet" href="../pages/css/Connexion.css">

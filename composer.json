@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/sti2shop",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Teyko",
+      "email": "theovilainfr@gmail.com"
+    }
+  ],
+  "require": {
+  }
+}

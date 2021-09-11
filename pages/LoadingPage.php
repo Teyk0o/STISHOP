@@ -1,7 +1,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Disponible prochainement - STI2SHOP</title>
+        <title>STI2SHOP - Bientôt disponible !</title>
         <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
         <link rel="stylesheet/less" type="text/css" href="../pages/less/LoadingPage.less">
         <link rel="stylesheet" href="../pages/css/LoadingPage.css">

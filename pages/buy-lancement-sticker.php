@@ -36,7 +36,6 @@ if (isset($_POST['setConfiguration'])) {
         $price = $price + 2.00;
         $_SESSION['price'] = $price;
         $_SESSION['quantity'] = "100";
-        echo ''. $_SESSION['price'] .'';
     } elseif ($quantity == "200") {
         $price = $price + 4.00;
         $_SESSION['price'] = $price;
@@ -65,7 +64,7 @@ if (isset($_POST['saveToCart'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="La boutique des préférée STI2D">
-    <title>STI2SHOP - LA boutique des STI2D</title>
+    <title>STI2SHOP - Nos stickers</title>
     <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
     <link rel="stylesheet" href="../pages/css/Main.css">
     <link rel="stylesheet" href="../pages/css/Shop.css">

@@ -5,7 +5,7 @@ session_start();
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 
 if (isset($_POST['deconnexionButton'])) {
-    $_SESSION = array();
+    session_unset();
     session_destroy();
     header("Location: ../Main.php");
 }
@@ -21,7 +21,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="La boutique des préférée STI2D">
-        <title>STI2SHOP - LA boutique des STI2D</title>
+        <title>STI2SHOP - Mon profil</title>
         <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
         <link rel="stylesheet" href="../pages/css/Main.css">
         <link rel="stylesheet" href="../pages/css/Profil.css">

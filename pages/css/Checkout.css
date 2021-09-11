@@ -1,0 +1,344 @@
+body {
+    overflow: hidden;
+}
+
+.fieldForm {
+    text-align: left;
+    background-color: white;
+    border: 1px solid #b9b9b9;
+    color: gray;
+    position: absolute;
+    width: 442px;
+    height: 35px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+#headerText {
+    position: relative;
+}
+
+#logo {
+    width: 180px;
+    position: absolute;
+    left: 45%;
+}
+
+#securePaymentText {
+    font-family: "Arial", sans-serif;
+    font-size: 25px;
+    position: absolute;
+    top: 53px;
+    left: 40%;
+}
+
+#securePaymentSubText {
+    font-family: "Arial", sans-serif;
+    font-size: 10px;
+    position: absolute;
+    top: 98px;
+    left: 31%;
+    color: #908f8f;
+}
+
+#paymentForm {
+    position: relative;
+}
+
+#paymentBackgroundForm {
+    background-color: #EFEFEF;
+    border: 1px solid #b9b9b9;
+    display: inline-block;
+    border-radius: 5px;
+    width: 835px;
+    height: 657px;
+    position: absolute;
+    top: 149px;
+    left: 15%;
+}
+
+#deliveryTitle {
+    font-family: "Arial", sans-serif;
+    font-size: 26px;
+    font-weight: 250;
+    position: absolute;
+    top: 140px;
+    left: 17%;
+}
+
+#deliverySubTitle {
+    font-family: "Arial", sans-serif;
+    color: #838383;
+    font-size: 12px;
+    font-weight: 250;
+    position: absolute;
+    top: 192px;
+    left: 17%;
+}
+
+#deliveryForm {
+    position: absolute;
+    top: 23px;
+    left: 17%;
+}
+
+#nameField {
+    position: absolute;
+    top: 259px;
+    left: 17%;
+}
+
+#firstnameField {
+    position: absolute;
+    top: 340px;
+    left: 17%;
+}
+
+#mailField {
+    position: absolute;
+    top: 423px;
+    left: 17%;
+}
+
+#adressField {
+    position: absolute;
+    top: 508px;
+    left: 17%;
+}
+
+#cityField {
+    position: absolute;
+    top: 595px;
+    left: 17%;
+}
+
+#zipField {
+    position: absolute;
+    top: 683px;
+    left: 17%;
+}
+
+#promoCode {
+    position: absolute;
+    top: 534px;
+    left: 900px;
+    width: 251px;
+    z-index: 1;
+}
+
+#articlesForm {
+    position: relative;
+}
+
+#articlesBackgroundForm {
+    background-color: #EFEFEF;
+    border: 1px solid #b9b9b9;
+    display: inline-block;
+    border-radius: 5px;
+    width: 300px;
+    height: 657px;
+    position: absolute;
+    top: 149px;
+    left: 63%;
+}
+
+#articlesTitle {
+    font-family: "Arial", sans-serif;
+    font-size: 26px;
+    font-weight: 250;
+    position: absolute;
+    top: 140px;
+    left: 65%;
+}
+
+#articleSubTitle {
+    font-family: "Arial", sans-serif;
+    color: #838383;
+    font-size: 12px;
+    font-weight: 250;
+    position: absolute;
+    top: 192px;
+    left: 65%;
+}
+
+#footerText {
+    position: fixed;
+    left: 35%;
+    top: 890px;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+}
+
+#actualCart {
+    position: relative;
+    top: 255px;
+    left: 61%;
+    font-family: "Arial", sans-serif;
+}
+
+ul li {
+    position: relative;
+    margin-bottom: -45px;
+    list-style-type: none;
+}
+
+.cartClass {
+    background-color: rgba(117, 190, 218, 0.0);
+    display: inline-block;
+    border-radius: 10px;
+    width: 600px;
+    height: 50px;
+    position: relative;
+    z-index: -1;
+}
+
+.liPositionQuantity {
+    margin-top: 72px;
+    position: absolute;
+    left: 90%;
+    top: -106px;
+}
+
+.liPositionQuality {
+    margin-top: 72px;
+    position: relative;
+    left: 42%;
+    top: -200px;
+    color: #908f8f;
+}
+
+.liPositionColor {
+    margin-top: 72px;
+    position: relative;
+    left: 55%;
+    top: -290px;
+    color: #908f8f;
+}
+
+.liPositionImg {
+    margin-top: 72px;
+    position: relative;
+    left: 2%;
+    top: -386px;
+    color: #908f8f;
+}
+
+.imgClass {
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid #b9b9b9;
+    position: relative;
+    width: 36px;
+    height: auto;
+    top: -6px;
+    left: -31%;
+}
+
+.optionArticle {
+    position: relative;
+    top: -11px;
+    left: 4%;
+    color: #908f8f;
+}
+
+.quantityArticle {
+    position: relative;
+    top: -54px;
+    left: 13%;
+    color: #908f8f;
+}
+
+.priceArticle {
+    position: relative;
+    top: -45px;
+    left: 13%;
+}
+
+#deleteRow {
+    background: url("../../img/bingray.png") center no-repeat;
+    background-size: 30px;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -96px;
+    left: 33%;
+    cursor: pointer;
+    color: rgba(117, 190, 218, 0.0);
+}
+
+#deleteRow:hover {
+    background: url("../../img/binorange.png") center no-repeat;
+    background-size: 30px;
+}
+
+.nameArticle {
+    position: relative;
+    top: 35px;
+    left: 4%;
+}
+
+.fieldTitle {
+    position: absolute;
+    font-family: "Arial", sans-serif;
+    font-weight: 200;
+    left: 17%;
+}
+
+#nameTitle {top: 237px;}
+
+#firstnameTitle {top: 319px;}
+
+#mailTitle {top: 403px;}
+
+#adressTitle {top: 488px;}
+
+#cityTitle {top: 575px;}
+
+#zipTitle {top: 661px;}
+
+#totalprice {
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+    font-weight: 350;
+    position: absolute;
+    top: 609px;
+    left: 69.5%;
+}
+
+#totalpricenothing {
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+    font-weight: 350;
+    position: absolute;
+    top: 609px;
+    left: 69.5%;
+}
+
+#allBuyButton {
+    position: relative;
+}
+
+#paypalButton {
+    position: absolute;
+    top: 675px;
+    left: 900px;
+    width: 251px;
+    height: 33px;
+    background-color: #253B80;
+    border: 2px solid #253B80;
+    display: inline-block;
+    border-radius: 2px;
+    color: white;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    z-index: 1;
+}
+
+#paypalButton:hover {
+    background-color: white;
+    color: #253B80;
+}

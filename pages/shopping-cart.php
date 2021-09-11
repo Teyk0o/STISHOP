@@ -35,7 +35,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="La boutique des préférée STI2D">
-    <title>STI2SHOP - LA boutique des STI2D</title>
+    <title>STI2SHOP - Panier</title>
     <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
     <link rel="stylesheet" href="../pages/css/Main.css">
     <link rel="stylesheet" href="../pages/css/shopCart.css">
@@ -73,19 +73,24 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
             $articleList->execute();
 
             while ($row = $articleList->fetch(PDO::FETCH_NUM)) {
-               echo '<li class="articleList" id="article'. 'n°' . $row[7] .'">';
-               echo '<div class="nameArticle" id="nameArticle'. $row[7] .'">'. $row[1] .'</div>';
-               echo  '<span class="CartClass" id="background'. $row[7] .'"></span>';
-               echo '<img id="imgClass'. $row[7] .'" src="'. $row[5] .'" class="imgClass">';
-               echo '<div class="optionArticle" id="optionArticle'. $row[7] .'" >'. $row[4] . ' | ' . $row[3] .'</div>';
-               echo '<div class="quantityArticle" id="quantityArticle'. $row[7] .'" >'. 'x' . $row[2] .'</div>';
-               echo '<div class="priceArticle" id="priceArticle'. $row[7] .'" >'. $row[6] . '€' .'</div>';
-               echo '<form method="POST" class="deleteRowForm" id="deleteRowForm'. $row[7] .'"><input type="submit" name="deleteRow" id="deleteRow" value="'. $row[7] .'" alt="'. $row[7] .'"></form>';
-               echo '</li>';
+                if ($row !== 0) {
+                    echo '<li class="articleList" id="article'. 'n°' . $row[7] .'">';
+                    echo '<div class="nameArticle" id="nameArticle'. $row[7] .'">'. $row[1] .'</div>';
+                    echo  '<span class="CartClass" id="background'. $row[7] .'"></span>';
+                    echo '<img id="imgClass'. $row[7] .'" src="'. $row[5] .'" class="imgClass">';
+                    echo '<div class="optionArticle" id="optionArticle'. $row[7] .'" >'. $row[4] . ' | ' . $row[3] .'</div>';
+                    echo '<div class="quantityArticle" id="quantityArticle'. $row[7] .'" >'. 'x' . $row[2] .'</div>';
+                    echo '<div class="priceArticle" id="priceArticle'. $row[7] .'" >'. $row[6] . '€' .'</div>';
+                    echo '<form method="POST" class="deleteRowForm" id="deleteRowForm'. $row[7] .'"><input type="submit" name="deleteRow" id="deleteRow" value="'. $row[7] .'" alt="'. $row[7] .'"></form>';
+                    echo '</li>';
+                } else {
+                    echo '<div id=nothingInCart>Votre panier est vide !</div>';
+                }
+
             }
             ?>
     </ul>
-    <div id="totalPrice">
+    <div id="totalPriceDiv">
         <?php
         $articleList = $bdd->prepare('SELECT SUM(price) AS value_sum FROM shoppingcart WHERE userId = :parameter');
         $articleList->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
@@ -93,7 +98,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
         $totalPrice = $articleList->fetch(PDO::FETCH_ASSOC);
         $total = $totalPrice['value_sum'];
-        echo 'Prix Total : '. $total .'€' .'';
+        if ($total > 0) {
+            echo '<div id=totalprice>Prix Total : '. $total .'€' .'</div>';
+        } else {
+            echo '<div id=totalpricenothing>Prix Total : '. '0.00€' .'</div>';
+        }
         ?>
     </div>
 </div>

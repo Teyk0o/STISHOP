@@ -135,17 +135,25 @@ ul li {
 }
 
 #footerText {
-    position: absolute;
+    position: fixed;
     left: 35%;
-    top: -203px;
+    top: 890px;
     font-family: "Arial", sans-serif;
     font-size: 15px;
 }
 
-#totalPrice {
+#totalprice {
     font-family: "Arial", sans-serif;
     font-size: 25px;
     position: absolute;
     top: 510px;
+    left: 36%;
+}
+
+#totalpricenothing {
+    font-family: "Arial", sans-serif;
+    font-size: 25px;
+    position: absolute;
+    top: 378px;
     left: 36%;
 }
