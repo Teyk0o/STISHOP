@@ -1,37 +1,12 @@
 <?php
 session_start();
-
 $havepromocode = 0;
 
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 
-if (isset($_POST['PAYPAL'])) {
-//    if (!empty($_POST['Nom']) AND !empty($_POST['Prenom']) AND !empty($_POST['Email']) AND !empty($_POST['Adress']) AND !empty($_POST['City']) AND !empty($_POST['ZipCode'])) {
-//
-//
-//    } else {
-//        $erreur = "Tous les champs doivent être remplis !";
-//    }
-    if (!empty($_POST['Promo'])) {
-        $promocode = $_POST['Promo'];
-
-        $reqpromo = $bdd->prepare("SELECT * FROM promocode WHERE code = ?");
-        $reqpromo->execute(array($promocode));
-        $codeexist = $reqpromo->rowCount();
-
-        if ($codeexist == 0) {
-            $havepromocode = 0;
-            $erreur = "Code promo invalide";
-        } else {
-            $havepromocode = 1;
-            $reqpromoavantage = $reqpromo->fetch();
-            $codeavantage = $reqpromoavantage['reduction'];
-        }
-    } else {
-        $erreur = "Aucun code promo entrer !";
-    }
-}
-
+// Inclusion et initialisation de PaypalExpress
+//include_once '../scripts/php/PaypalExpress.php';
+//$paypal = new PaypalExpress();
 ?>
 <html>
     <head>
@@ -58,8 +33,84 @@ if (isset($_POST['PAYPAL'])) {
                 <input type="text" name="City" placeholder="Ville" class="fieldForm" id="cityField">
                 <input type="number" name="ZipCode" placeholder="Code Postal" class="fieldForm" id="zipField">
                 <input type="text" name="Promo" placeholder="Code Promo" class="fieldForm" id="promoCode">
-                <input type="submit" value="PAYPAL" name="PAYPAL" id="paypalButton">
+                <div name="PAYPAL" id="paypal-button" onClick="javascript:this.form.submit();"></div>
+<!--                <input type="submit" value="PAYPAL" name="PAYPAL" id="paypaldzaad-button">-->
             </form>
+            <?php
+            if (isset($_POST['PAYPAL'])) {
+                if (!empty($_POST['Nom']) AND !empty($_POST['Prenom']) AND !empty($_POST['Email']) AND !empty($_POST['Adress']) AND !empty($_POST['City']) AND !empty($_POST['ZipCode'])) {
+                    if (!empty($_POST['Promo'])) {
+                        $promocode = $_POST['Promo'];
+
+                        $reqpromo = $bdd->prepare("SELECT * FROM promocode WHERE code = ?");
+                        $reqpromo->execute(array($promocode));
+                        $codeexist = $reqpromo->rowCount();
+
+                        if ($codeexist == 0) {
+                            $havepromocode = 0;
+                            $erreur = "Code promo invalide";
+                        } else {
+                            $havepromocode = 1;
+                            $reqpromoavantage = $reqpromo->fetch();
+                            $codeavantage = $reqpromoavantage['reduction'];
+                            $erreur = "Code promo valide";
+                        }
+                    } else {
+                        $erreur = "Aucun code promo entrer !";
+                    }
+                } else {
+                    $erreur = "Tous les champs doivent être remplis !";
+                }
+            }
+            ?>
+            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <script>
+                paypal.Button.render({
+                    // Configure environment
+                    env: 'sandbox',
+                    client: {
+                        sandbox: 'demo_sandbox_client_id',
+                        production: 'demo_production_client_id'
+                    },
+                    // Customize button (optional)
+                    locale: 'fr_FR',
+                    style: {
+                        layout: 'horizontal',
+                        size: 'medium',
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'paypal',
+                        tagline: 'false',
+                        fundingicon: 'true',
+                    },
+                    funding: {
+                        allowed: [ paypal.FUNDING.CARD],
+                    },
+
+                    // Enable Pay Now checkout flow (optional)
+                    commit: true,
+
+                    // Set up a payment
+                    payment: function(data, actions) {
+                        return actions.payment.create({
+                            transactions: [{
+                                amount: {
+                                    total: '0.01',
+                                    currency: 'USD'
+                                }
+                            }]
+                        });
+                    },
+                    // Execute the payment
+                    onAuthorize: function(data, actions) {
+                        return actions.payment.execute().then(function() {
+                            // Show a confirmation message to the buyer
+                            window.alert('Thank you for your purchase!');
+                        });
+                    }
+                }, 'paypal-button');
+
+            </script>
             <div id="fieldTitle">
                 <h4 class="fieldTitle" id="nameTitle">Nom</h4>
                 <h4 class="fieldTitle" id="firstnameTitle">Prénom</h4>

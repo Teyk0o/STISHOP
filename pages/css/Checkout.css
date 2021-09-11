@@ -319,26 +319,31 @@ ul li {
     position: relative;
 }
 
-#paypalButton {
-    position: absolute;
-    top: 675px;
-    left: 900px;
-    width: 251px;
-    height: 33px;
-    background-color: #253B80;
-    border: 2px solid #253B80;
-    display: inline-block;
-    border-radius: 2px;
-    color: white;
-    font-family: "Arial", sans-serif;
-    font-weight: bold;
-    font-size: 17px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    z-index: 1;
-}
+/*#paypal-button {*/
+/*    position: absolute;*/
+/*    top: 675px;*/
+/*    left: 900px;*/
+/*    width: 251px;*/
+/*    height: 33px;*/
+/*    background-color: #253B80;*/
+/*    border: 2px solid #253B80;*/
+/*    display: inline-block;*/
+/*    border-radius: 2px;*/
+/*    color: white;*/
+/*    font-family: "Arial", sans-serif;*/
+/*    font-weight: bold;*/
+/*    font-size: 17px;*/
+/*    cursor: pointer;*/
+/*    transition-duration: 0.4s;*/
+/*    z-index: 1;*/
+/*}*/
 
-#paypalButton:hover {
-    background-color: white;
-    color: #253B80;
+/*#paypal-button:hover {*/
+/*    background-color: white;*/
+/*    color: #253B80;*/
+/*}*/
+
+#paypal-button {
+    width: auto;
+    height: auto;
 }
