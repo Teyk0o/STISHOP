@@ -1,5 +1,6 @@
 <?php
 session_start();
+$total = 0;
 
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 
@@ -10,11 +11,11 @@ if (isset($_SESSION['id'])) {
 }
 
 if (isset($_POST['connexionAButton'])) {
-    header("Location: ../pages/Connexion.php");
+    header("Location: Connexion.php");
 }
 
 if (isset($_POST['profilButton'])) {
-    header("Location: ../pages/Profil.php?id=".$_SESSION['id']);
+    header("Location: Profil.php?id=".$_SESSION['id']);
 }
 
 if (isset($_POST['deleteRow'])) {
@@ -45,10 +46,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
     <a href="../Main.php">
         <img src="../img/logo.png" id="logo">
     </a>
-    <button onclick="goToMain()" class="headerButton" id="mainButton">Accueil</button>
-    <button onclick="goToShop()" class="headerButton" id="shopButton">Boutique</button>
-    <button onclick="goToContact()" class="headerButton" id="communityButton">Communauté</button>
-    <a href="../pages/Panier.html">
+    <button onclick="location.href = '../Main.php'" class="headerButton" id="mainButton">Accueil</button>
+    <button onclick="location.href = '../Main.php'" class="headerButton" id="shopButton">Boutique</button>
+    <button onclick="location.href = '../Main.php'" class="headerButton" id="communityButton">Communauté</button>
+    <a href="#">
         <img src="../img/shopping-cart.png" id="panier">
     </a>
     <form method="post" id="connexionButton" style="display: block">
@@ -103,6 +104,17 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
         } else {
             echo '<div id=totalpricenothing>Prix Total : '. '0.00€' .'</div>';
         }
+        if (isset($_POST['payments'])) {
+            if ($total > 0) {
+                ?>
+                <script>
+                    location.href = "Delivery.php?id=" + <?php echo $_SESSION['id']?>;
+                </script>
+        <?php
+            } else {
+                $erreur = "Votre panier est vide !";
+            }
+        }
         ?>
     </div>
 </div>
@@ -112,6 +124,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 </body>
 <?php
 }
+} else { ?>
+    <script>
+        location.href = "../Main.php";
+    </script>
+    <?php
 }
 if ($connected == 1) { ?>
     <script type="text/javascript">document.getElementById('connexionButton').style.display = 'block';</script>
@@ -122,6 +139,14 @@ if ($connected == 1) { ?>
     <script type="text/javascript">document.getElementById('connexionButton').style.display = 'none';</script>
     <script type="text/javascript">document.getElementById('profilButton').style.display = 'block';</script>
     <?php
+}
+?>
+<?php
+if(isset($erreur)) {
+    function function_alert($erreur) {
+        echo "<script>alert('$erreur');</script>";
+    }
+    function_alert($erreur);
 }
 ?>
 </html>

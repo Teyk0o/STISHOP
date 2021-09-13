@@ -3,6 +3,7 @@
 session_start();
 
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
+$bdd->exec("SET CHARACTER SET utf8");
 
 if (isset($_POST['deconnexionButton'])) {
     session_unset();
@@ -32,10 +33,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
             <a href="../Main.php">
                 <img src="../img/logo.png" id="logo">
             </a>
-            <button onclick="goToMain()" class="headerButton" id="mainButton">Accueil</button>
-            <button onclick="goToShop()" class="headerButton" id="shopButton">Boutique</button>
-            <button onclick="goToContact()" class="headerButton" id="communityButton">Communauté</button>
-            <a href="../pages/Panier.html">
+            <button onclick="location.href = '../Main.php'" class="headerButton" id="mainButton">Accueil</button>
+            <button onclick="location.href = '../Main.php'" class="headerButton" id="shopButton">Boutique</button>
+            <button onclick="location.href = '../Main.php'" class="headerButton" id="communityButton">Communauté</button>
+            <a onclick="location.href = 'shopping-cart.php?id=' + <?php echo $_SESSION['id']?>">
                 <img src="../img/shopping-cart.png" id="panier">
             </a>
             <button onclick="goToProfil()" id="connexionAccessButton">Mon profil</button>
@@ -74,7 +75,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
                 <input name="Name" type="text" value="<?php echo $userinfo['name']?>" disabled="disabled" class="fieldFormProfil" />
                 <input name="Firstname" type="text" value="<?php echo $userinfo['firstname']?>" disabled="disabled" class="fieldFormProfil" id="firstnameField"/>
                 <input name="Birthdate" type="text" value="<?php echo $userinfo['birth']?>" disabled="disabled" class="fieldFormProfil" id="birthdateField"/>
-                <input name="Adress" type="text" value="<?php echo $userinfo['adress']?>" disabled="disabled" class="fieldFormProfil"  id="adressField"/>
+                <input name="Adress" type="text" value="<?php echo $userinfo['adress'] . "," . $userinfo['zipCode'] . "," . $userinfo['city']?>" disabled="disabled" class="fieldFormProfil"  id="adressField"/>
                 <input name="Mail" type="text" value="<?php echo $userinfo['mail']?>" disabled="disabled" class="fieldFormProfil" id="emailField"/>
             </form>
             <h4 id="nameText" class="fieldNameProfil">Nom</h4>
@@ -121,5 +122,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 </html>
 <?php
     }
+} else { ?>
+    <script>
+        location.href = "../Main.php";
+    </script>
+    <?php
 }
 ?>

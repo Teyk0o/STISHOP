@@ -1,12 +1,8 @@
 <?php
 session_start();
-$havepromocode = 0;
 
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
-
-// Inclusion et initialisation de PaypalExpress
-//include_once '../scripts/php/PaypalExpress.php';
-//$paypal = new PaypalExpress();
+$bdd->exec("SET CHARACTER SET utf8");
 ?>
 <html>
     <head>
@@ -23,102 +19,64 @@ $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
         </div>
         <div id="paymentForm">
             <span id="paymentBackgroundForm"></span>
-            <h3 id="deliveryTitle">Informations de Livraison</h3>
+            <h3 id="deliveryTitle">Paiement</h3>
             <h4 id="deliverySubTitle">Vos informations seront stockées pour l'envoie de votre commande.<br>Vous pouvez demander la suppression de vos données n'importe quand depuis votre profil.</h4>
             <form method="post" id="deliveryForm" name="deliveryForm">
-                <input type="text" name="Nom" placeholder="Nom" class="fieldForm" id="nameField">
-                <input type="text" name="Prenom" placeholder="Prénom" class="fieldForm" id="firstnameField">
-                <input type="email" name="Email" placeholder="Adresse-mail" class="fieldForm" id="mailField">
-                <input type="text" name="Adress" placeholder="Adresse (Numéro et Rue)" class="fieldForm" id="adressField">
-                <input type="text" name="City" placeholder="Ville" class="fieldForm" id="cityField">
-                <input type="number" name="ZipCode" placeholder="Code Postal" class="fieldForm" id="zipField">
-                <input type="text" name="Promo" placeholder="Code Promo" class="fieldForm" id="promoCode">
-                <div name="PAYPAL" id="paypal-button" onClick="javascript:this.form.submit();"></div>
-<!--                <input type="submit" value="PAYPAL" name="PAYPAL" id="paypaldzaad-button">-->
+                <input type="submit" id="submitFormDelivery" name="cancelDelivery" class="fieldForm" value="Annuler">
             </form>
-            <?php
-            if (isset($_POST['PAYPAL'])) {
-                if (!empty($_POST['Nom']) AND !empty($_POST['Prenom']) AND !empty($_POST['Email']) AND !empty($_POST['Adress']) AND !empty($_POST['City']) AND !empty($_POST['ZipCode'])) {
-                    if (!empty($_POST['Promo'])) {
-                        $promocode = $_POST['Promo'];
-
-                        $reqpromo = $bdd->prepare("SELECT * FROM promocode WHERE code = ?");
-                        $reqpromo->execute(array($promocode));
-                        $codeexist = $reqpromo->rowCount();
-
-                        if ($codeexist == 0) {
-                            $havepromocode = 0;
-                            $erreur = "Code promo invalide";
-                        } else {
-                            $havepromocode = 1;
-                            $reqpromoavantage = $reqpromo->fetch();
-                            $codeavantage = $reqpromoavantage['reduction'];
-                            $erreur = "Code promo valide";
-                        }
-                    } else {
-                        $erreur = "Aucun code promo entrer !";
-                    }
-                } else {
-                    $erreur = "Tous les champs doivent être remplis !";
+            <div id="paypal-button"></div>
+            <script>
+                function submitForm()
+                {
+                    buttonsubmit = document.getElementById('submitFormDelivery');
+                    buttonsubmit.click();
                 }
-            }
-            ?>
+            </script>
             <script src="https://www.paypalobjects.com/api/checkout.js"></script>
             <script>
-                paypal.Button.render({
-                    // Configure environment
-                    env: 'sandbox',
-                    client: {
-                        sandbox: 'demo_sandbox_client_id',
-                        production: 'demo_production_client_id'
-                    },
-                    // Customize button (optional)
-                    locale: 'fr_FR',
-                    style: {
-                        layout: 'horizontal',
-                        size: 'medium',
-                        color: 'blue',
-                        shape: 'rect',
-                        label: 'paypal',
-                        tagline: 'false',
-                        fundingicon: 'true',
-                    },
-                    funding: {
-                        allowed: [ paypal.FUNDING.CARD],
-                    },
-
-                    // Enable Pay Now checkout flow (optional)
-                    commit: true,
-
-                    // Set up a payment
-                    payment: function(data, actions) {
-                        return actions.payment.create({
-                            transactions: [{
-                                amount: {
-                                    total: '0.01',
-                                    currency: 'USD'
-                                }
-                            }]
-                        });
-                    },
-                    // Execute the payment
-                    onAuthorize: function(data, actions) {
-                        return actions.payment.execute().then(function() {
-                            // Show a confirmation message to the buyer
-                            window.alert('Thank you for your purchase!');
-                        });
-                    }
-                }, 'paypal-button');
-
+                    paypal.Button.render({
+                        // Configuration de l'environement
+                        env: 'sandbox',
+                        client: {
+                            sandbox: 'demo_sandbox_client_id',
+                            production: 'demo_production_client_id'
+                        },
+                        // Customisation du bouton
+                        locale: 'fr_FR',
+                        style: {
+                            layout: 'horizontal',
+                            size: 'medium',
+                            color: 'blue',
+                            shape: 'rect',
+                            label: 'paypal',
+                            tagline: 'false',
+                            fundingicon: 'true',
+                        },
+                        funding: {
+                            allowed: [ paypal.FUNDING.CARD],
+                        },
+                        // Set up a payment
+                        payment: function(data, actions) {
+                            // Avant paiement
+                            // Création du paiement
+                            return actions.payment.create({
+                                transactions: [{
+                                    amount: {
+                                        total: '<?php echo $_SESSION['totalPrice']; ?>',
+                                        currency: 'EUR'
+                                    }
+                                }]
+                            })
+                        },
+                        // Execution du paiement
+                        onAuthorize: function(data, actions) {
+                            return actions.payment.execute().then(function() {
+                                // Affichage après paiement
+                                location.href = "PaymentSucess.php";
+                            });
+                        }
+                    }, 'paypal-button');
             </script>
-            <div id="fieldTitle">
-                <h4 class="fieldTitle" id="nameTitle">Nom</h4>
-                <h4 class="fieldTitle" id="firstnameTitle">Prénom</h4>
-                <h4 class="fieldTitle" id="mailTitle">Adresse-mail</h4>
-                <h4 class="fieldTitle" id="adressTitle">Adresse postale</h4>
-                <h4 class="fieldTitle" id="cityTitle">Ville</h4>
-                <h4 class="fieldTitle" id="zipTitle">Code Postal</h4>
-            </div>
         </div>
         <div id="articlesForm">
             <span id="articlesBackgroundForm"></span>
@@ -146,20 +104,11 @@ $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
             </div>
             <div id="totalPriceDiv">
                 <h4 id="price"><?php
-
-                    $articleList = $bdd->prepare('SELECT SUM(price) AS value_sum FROM shoppingcart WHERE userId = :parameter');
-                    $articleList->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
-                    $articleList->execute();
-
-                    $totalPrice = $articleList->fetch(PDO::FETCH_ASSOC);
-                    $total = $totalPrice['value_sum'];
-                    if ($havepromocode == 1) {
-                        $promocalculated = ($totalPrice['value_sum'] / 100) * $codeavantage;
-                        $totalwpromo = number_format($totalPrice['value_sum'] - $promocalculated, 2);
-                        echo '<div id=totalprice>Prix Total : '. $totalwpromo .'€' .'</div>';
+                    if ($_SESSION['promocode']== 1) {
+                        echo '<div id=totalprice>Prix Total : '. $_SESSION['totalPrice'] .'€' .'</div>';
                     } else {
-                        if ($total > 0) {
-                            echo '<div id=totalprice>Prix Total : '. $total .'€' .'</div>';
+                        if ($_SESSION['totalPrice'] > 0) {
+                            echo '<div id=totalprice>Prix Total : '. $_SESSION['totalPrice'] .'€' .'</div>';
                         } else {
                             echo '<div id=totalpricenothing>Prix Total : '. '0.00€' .'</div>';
                         }

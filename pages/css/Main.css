@@ -129,6 +129,7 @@ body {
     width: 30px;
     left: 86%;
     top: 38px;
+    cursor: pointer;
 }
 
 #connexionAccessButton {

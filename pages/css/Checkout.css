@@ -302,7 +302,7 @@ ul li {
     font-size: 20px;
     font-weight: 350;
     position: absolute;
-    top: 609px;
+    top: 696px;
     left: 69.5%;
 }
 
@@ -319,31 +319,76 @@ ul li {
     position: relative;
 }
 
-/*#paypal-button {*/
-/*    position: absolute;*/
-/*    top: 675px;*/
-/*    left: 900px;*/
-/*    width: 251px;*/
-/*    height: 33px;*/
-/*    background-color: #253B80;*/
-/*    border: 2px solid #253B80;*/
-/*    display: inline-block;*/
-/*    border-radius: 2px;*/
-/*    color: white;*/
-/*    font-family: "Arial", sans-serif;*/
-/*    font-weight: bold;*/
-/*    font-size: 17px;*/
-/*    cursor: pointer;*/
-/*    transition-duration: 0.4s;*/
-/*    z-index: 1;*/
-/*}*/
-
-/*#paypal-button:hover {*/
-/*    background-color: white;*/
-/*    color: #253B80;*/
-/*}*/
-
 #paypal-button {
     width: auto;
     height: auto;
+    position: absolute;
+    top: 282px;
+    left: 325px;
+}
+
+#submitFormDelivery {
+    color: white;
+    background-color: #FC8C04;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    font-weight: 300;
+    width: 250px;
+    cursor: pointer;
+    position: absolute;
+    top: 717px;
+    left: 901px;
+    display: inline-block;
+    border: 2px solid #FC8C04;
+    z-index: 1;
+}
+#submitFormDelivery:hover {
+    color: #FC8C04;
+    background-color: white;
+}
+
+#commandDoneSubTitle {
+    font-family: "Arial", sans-serif;
+    color: #838383;
+    font-size: 14px;
+    font-weight: 250;
+    position: absolute;
+    top: 331px;
+    left: 16.5%;
+    text-align: center;
+}
+
+#commandDoneTitle {
+    font-family: "Arial", sans-serif;
+    font-size: 38px;
+    font-weight: 250;
+    position: absolute;
+    top: 207px;
+    left: 28%;
+}
+
+#commandDoneButton {
+    color: white;
+    background-color: #FC8C04;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    font-weight: 300;
+    width: 307px;
+    cursor: pointer;
+    position: absolute;
+    top: 549px;
+    left: 566px;
+    display: inline-block;
+    border: 2px solid #FC8C04;
+    z-index: 1;
+}
+
+#commandDoneButton:hover {
+    color: #FC8C04;
+    background-color: white;
+}
+
+#commandDoneForm {
+    position: relative;
+    left: 223px;
 }

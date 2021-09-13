@@ -9,16 +9,21 @@ include 'admin/pageControl.php';
 $pageControlVar = new pageControl();
 $pageControlVar->shopOpenned();
 
-if (isset($_SESSION['id'])) {
+$sessionOpen = $_SESSION['id'];
+
+if ($sessionOpen > 0) {
     $connected = 0;
-} else $connected = 1;
+} else {
+    $_SESSION['id'] = -1;
+    $connected = 1;
+}
 
 if (isset($_POST['connexionAButton'])) {
     header("Location: pages/Connexion.php");
 }
 
 if (isset($_POST['profilButton'])) {
-    header("Location: pages/shopping-cart.php?id=".$_SESSION['id']);
+    header("Location: pages/Profil.php?id=".$_SESSION['id']);
 }
 
 if (isset($_POST['goToPatrols'])) {
@@ -54,7 +59,7 @@ if (isset($_POST['goToQRCode'])) {
             <button onclick="goToMain()" class="headerButton" id="mainButton">Accueil</button>
             <button onclick="goToShop()" class="headerButton" id="shopButton">Boutique</button>
             <button onclick="goToContact()" class="headerButton" id="communityButton">Communauté</button>
-            <a>
+            <a onclick="location.href = 'pages/shopping-cart.php?id=' + <?php echo $_SESSION['id']?>">
                 <img src="img/shopping-cart.png" id="panier">
             </a>
             <form method="post" id="connexionButton" style="display: block">
