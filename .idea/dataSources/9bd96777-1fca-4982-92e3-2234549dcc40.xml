@@ -772,219 +772,158 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Host>localhost</Host>
     </user>
     <table id="232" parent="2" name="membres"/>
-    <table id="233" parent="2" name="payments">
-      <Engine>InnoDB</Engine>
-      <Collation>utf8_unicode_ci</Collation>
-    </table>
-    <table id="234" parent="2" name="promocode"/>
-    <table id="235" parent="2" name="sales"/>
-    <table id="236" parent="2" name="shoppingcart"/>
-    <column id="237" parent="232" name="id">
+    <table id="233" parent="2" name="promocode"/>
+    <table id="234" parent="2" name="sales"/>
+    <table id="235" parent="2" name="shoppingcart"/>
+    <column id="236" parent="232" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="238" parent="232" name="username">
+    <column id="237" parent="232" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="239" parent="232" name="mail">
+    <column id="238" parent="232" name="mail">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="240" parent="232" name="password">
+    <column id="239" parent="232" name="password">
       <Position>4</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="241" parent="232" name="name">
+    <column id="240" parent="232" name="name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <Collation>utf8_bin</Collation>
+      <Collation>utf8_unicode_ci</Collation>
     </column>
-    <column id="242" parent="232" name="firstname">
+    <column id="241" parent="232" name="firstname">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <Collation>utf8_bin</Collation>
+      <Collation>utf8_unicode_ci</Collation>
     </column>
-    <column id="243" parent="232" name="adress">
+    <column id="242" parent="232" name="adress">
       <Position>7</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8_bin</Collation>
     </column>
-    <column id="244" parent="232" name="city">
+    <column id="243" parent="232" name="city">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8_bin</Collation>
     </column>
-    <column id="245" parent="232" name="zipCode">
+    <column id="244" parent="232" name="zipCode">
       <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
+    </column>
+    <column id="245" parent="232" name="birth">
+      <Position>10</Position>
+      <DataType>int(11)|0s</DataType>
     </column>
     <key id="246" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="247" parent="233" name="id">
+    <column id="247" parent="233" name="code">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="248" parent="233" name="reduction">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="249" parent="234" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="248" parent="233" name="product_id">
+    <column id="250" parent="234" name="buyerName">
       <Position>2</Position>
-      <DataType>int(10)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="249" parent="233" name="txn_id">
+    <column id="251" parent="234" name="buyerFirstName">
       <Position>3</Position>
-      <DataType>varchar(200)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="250" parent="233" name="payment_gross">
+    <column id="252" parent="234" name="buyerAdress">
       <Position>4</Position>
-      <DataType>float(10,2 digit)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="251" parent="233" name="currency_code">
+    <column id="253" parent="234" name="articleList">
       <Position>5</Position>
-      <DataType>varchar(5)|0s</DataType>
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="252" parent="233" name="payer_id">
+    <column id="254" parent="234" name="totalPrice">
       <Position>6</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="253" parent="233" name="payer_name">
+    <column id="255" parent="234" name="done">
       <Position>7</Position>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="254" parent="233" name="payer_email">
-      <Position>8</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="255" parent="233" name="payer_country">
-      <Position>9</Position>
-      <DataType>varchar(5)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="256" parent="233" name="payment_status">
-      <Position>10</Position>
-      <DataType>varchar(10)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="257" parent="233" name="created">
-      <Position>11</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="258" parent="233" name="PRIMARY">
+    <key id="256" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="259" parent="234" name="code">
-      <Position>1</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="260" parent="234" name="reduction">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="261" parent="235" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="262" parent="235" name="buyerName">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="263" parent="235" name="buyerFirstName">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="264" parent="235" name="buyerAdress">
-      <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="265" parent="235" name="articleList">
-      <Position>5</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="266" parent="235" name="totalPrice">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="267" parent="235" name="done">
-      <Position>7</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="268" parent="235" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="269" parent="236" name="userId">
+    <column id="257" parent="235" name="userId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="270" parent="236" name="articles">
+    <column id="258" parent="235" name="articles">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="271" parent="236" name="quantity">
+    <column id="259" parent="235" name="quantity">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="272" parent="236" name="quality">
+    <column id="260" parent="235" name="quality">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="273" parent="236" name="color">
+    <column id="261" parent="235" name="color">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="274" parent="236" name="img">
+    <column id="262" parent="235" name="img">
       <Position>6</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="275" parent="236" name="price">
+    <column id="263" parent="235" name="price">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="276" parent="236" name="id">
+    <column id="264" parent="235" name="id">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <key id="277" parent="236" name="PRIMARY">
+    <key id="265" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

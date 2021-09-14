@@ -10,12 +10,22 @@ $pageControlVar = new pageControl();
 $pageControlVar->shopOpenned();
 
 $sessionOpen = $_SESSION['id'];
+// Reinitialisation de la varibale de code promo valable
+$_SESSION['promocode'] = 0;
+$_SESSION['actualPromo'] = 0;
 
-if ($sessionOpen > 0) {
-    $connected = 0;
-} else {
-    $_SESSION['id'] = -1;
-    $connected = 1;
+if ($sessionOpen >= -1) {
+    if ($sessionOpen = -1) {
+        // Non connecter
+        $connected = 1;
+    } elseif ($sessionOpen > 0) {
+        // Connecter
+        $connected = 0;
+    } else {
+        $_SESSION['id'] = -1;
+        header("Refresh:0");
+        $connected = 1;
+    }
 }
 
 if (isset($_POST['connexionAButton'])) {

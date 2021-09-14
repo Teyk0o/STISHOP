@@ -21,6 +21,7 @@ body {
     width: 179px;
     transition-duration: 0.4s;
     font-size: 20px;
+    cursor: pointer;
 }
 
 #payment:hover {

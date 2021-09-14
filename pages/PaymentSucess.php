@@ -3,44 +3,6 @@ session_start();
 
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 $bdd->exec("SET CHARACTER SET utf8");
-
-// Reinitialisation de la varibale de code promo valable
-$_SESSION['promocode'] = 0;
-
-// Quand le bouton procéder au paiement est cliquer
-if (isset($_POST['submitFormDelivery'])) {
-    // Vérification que les informations de livraisons sont entrées
-    if (!empty($_POST['Nom']) AND !empty($_POST['Prenom']) AND !empty($_POST['Email']) AND !empty($_POST['Adress']) AND !empty($_POST['City']) AND !empty($_POST['ZipCode'])) {
-        // Est-ce qu'un code promo à été entré ?
-        if (!empty($_POST['Promo'])) {
-            $codeactif = htmlspecialchars($_POST['Promo']);
-            $codeexist = $bdd->prepare('SELECT * FROM promocode WHERE code = ?');
-            $codeexist->execute(array($codeactif));
-            $codeexistant = $codeexist->rowCount();
-            // Vérification de l'existance du code promo
-            if ($codeexistant == 0) {
-                $erreur = "Code promo invalide !";
-            } else {
-                $_SESSION['promocode'] = 1;
-                $checkavantage = $codeexist->fetch();
-                $codeavantage = $checkavantage['reduction'];
-            }
-        }
-        $data = [
-            'name' => htmlspecialchars($_POST['Nom']),
-            'firstname' => htmlspecialchars($_POST['Prenom']),
-            'adress' => htmlspecialchars($_POST['Adress']),
-            'city' => htmlspecialchars($_POST['City']),
-            'zipCode' => $_POST['ZipCode'],
-            'id' => $_GET['id']
-        ];
-        $insertdeliveryinfo = $bdd->prepare("UPDATE membres SET name=:name, firstname=:firstname, adress=:adress, city=:city, zipCode=:zipCode WHERE id=:id");
-        $insertdeliveryinfo->execute($data);
-        header("Location: checkout.php");
-    } else {
-        $erreur = "Tous les champs doivent être remplis !";
-    }
-}
 ?>
 <html>
 <head>

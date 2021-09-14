@@ -4,28 +4,27 @@ session_start();
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 $bdd->exec("SET CHARACTER SET utf8");
 
-// Reinitialisation de la varibale de code promo valable
-$_SESSION['promocode'] = 0;
+// Quand le bouton appliquer la réduction est cliquer
+if (isset($_POST['applyPromo'])) {
+    $codeactif = htmlspecialchars($_POST['Promo']);
+    $codeexist = $bdd->prepare('SELECT * FROM promocode WHERE code = ?');
+    $codeexist->execute(array($codeactif));
+    $codeexistant = $codeexist->rowCount();
+    // Vérification de l'existance du code promo
+    if ($codeexistant == 0) {
+        $erreur = "Code promo invalide !";
+    } else {
+        $_SESSION['promocode'] = 1;
+        $checkavantage = $codeexist->fetch();
+        $codeavantage = $checkavantage['reduction'];
+        $_SESSION['actualPromo'] = $codeavantage;
+    }
+}
 
 // Quand le bouton procéder au paiement est cliquer
 if (isset($_POST['submitFormDelivery'])) {
     // Vérification que les informations de livraisons sont entrées
     if (!empty($_POST['Nom']) AND !empty($_POST['Prenom']) AND !empty($_POST['Email']) AND !empty($_POST['Adress']) AND !empty($_POST['City']) AND !empty($_POST['ZipCode'])) {
-        // Est-ce qu'un code promo à été entré ?
-        if (!empty($_POST['Promo'])) {
-            $codeactif = htmlspecialchars($_POST['Promo']);
-            $codeexist = $bdd->prepare('SELECT * FROM promocode WHERE code = ?');
-            $codeexist->execute(array($codeactif));
-            $codeexistant = $codeexist->rowCount();
-            // Vérification de l'existance du code promo
-            if ($codeexistant == 0) {
-                $erreur = "Code promo invalide !";
-            } else {
-                $_SESSION['promocode'] = 1;
-                $checkavantage = $codeexist->fetch();
-                $codeavantage = $checkavantage['reduction'];
-            }
-        }
         $data = [
                 'name' => htmlspecialchars($_POST['Nom']),
             'firstname' => htmlspecialchars($_POST['Prenom']),
@@ -34,6 +33,22 @@ if (isset($_POST['submitFormDelivery'])) {
             'zipCode' => $_POST['ZipCode'],
             'id' => $_GET['id']
         ];
+
+        $saleId = "STI" . rand(1000, 9999);
+        $buyerName = htmlspecialchars($_POST['Nom']);
+        $buyerFirstName = htmlspecialchars($_POST['Prenom']);
+        $buyerAdress = htmlspecialchars($_POST['Adress'] . ", " . $_POST['ZipCode'] . ", " . $_POST['City']);
+        $totalPrice = $_SESSION['totalPrice'];
+        $articles = $bdd->prepare('SELECT * FROM shoppingcart WHERE userId = :parameter');
+        $articles->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+        $articles->execute();
+        while($row = $articles->fetch(PDO::FETCH_NUM)) {
+            $json[] = $row;
+            $articlesInfo = json_encode($json);
+        }
+        $insertsaleinfo = $bdd->prepare("INSERT INTO sales (id, buyerName, buyerFirstName, buyerAdress, articleList, totalPrice, done) VALUE (?, ?, ?, ?, ?, ?, 'NO')");
+        $insertsaleinfo->execute(array($saleId, $buyerName, $buyerFirstName, $buyerAdress, $articlesInfo, $totalPrice));
+
         $insertdeliveryinfo = $bdd->prepare("UPDATE membres SET name=:name, firstname=:firstname, adress=:adress, city=:city, zipCode=:zipCode WHERE id=:id");
         $insertdeliveryinfo->execute($data);
         header("Location: checkout.php?id=".$_SESSION['id']);
@@ -66,8 +81,11 @@ if (isset($_POST['submitFormDelivery'])) {
         <input type="text" name="Adress" placeholder="Adresse (Numéro et Rue)" class="fieldForm" id="adressField">
         <input type="text" name="City" placeholder="Ville" class="fieldForm" id="cityField">
         <input type="number" name="ZipCode" placeholder="Code Postal" class="fieldForm" id="zipField">
-        <input type="text" name="Promo" placeholder="Code Promo" class="fieldForm" id="promoCode">
         <input type="submit" id="submitFormDelivery" name="submitFormDelivery" class="fieldForm" value="Paiement ->">
+    </form>
+    <form method="post" id="promoForm">
+        <input type="text" name="Promo" placeholder="Code Promo" class="fieldForm" id="promoCode">
+        <input type="submit" name="applyPromo" value="Appliquer la réduction" id="promoCodeButton" class="fieldForm">
     </form>
     <div id="fieldTitle">
         <h4 class="fieldTitle" id="nameTitle">Nom</h4>
@@ -114,7 +132,7 @@ if (isset($_POST['submitFormDelivery'])) {
             if ($_SESSION['promocode'] == 1) {
                 $promocalculated = ($totalPrice['value_sum'] / 100) * $codeavantage;
                 $totalwpromo = number_format($totalPrice['value_sum'] - $promocalculated, 2);
-                $_SESSION['totalPrice'] = $totalwpromo;
+                $_SESSION['totalPriceW'] = $totalwpromo;
                 echo '<div id=totalprice>Prix Total : '. $totalwpromo .'€' .'</div>';
             } else {
                 if ($total > 0) {

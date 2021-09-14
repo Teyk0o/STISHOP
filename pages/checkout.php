@@ -3,6 +3,22 @@ session_start();
 
 $bdd  = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 $bdd->exec("SET CHARACTER SET utf8");
+
+$articleList = $bdd->prepare('SELECT SUM(price) AS value_sum FROM shoppingcart WHERE userId = :parameter');
+$articleList->bindParam(':parameter', $_GET['id'], PDO::PARAM_STR);
+$articleList->execute();
+
+$totalPrice = $articleList->fetch(PDO::FETCH_ASSOC);
+$total = $totalPrice['value_sum'];
+if ($_SESSION['promocode'] == 1) {
+    $promocalculated = ($total / 100) * $_SESSION['actualPromo'];
+    $totalwpromo = number_format($total - $promocalculated, 2);
+    $_SESSION['totalPrice'] = $totalwpromo;
+} elseif ($_SESSION['promocode'] == 0) {
+    if ($total > 0) {
+        $_SESSION['totalPrice'] = $total;
+    }
+}
 ?>
 <html>
     <head>
@@ -104,15 +120,11 @@ $bdd->exec("SET CHARACTER SET utf8");
             </div>
             <div id="totalPriceDiv">
                 <h4 id="price"><?php
-                    if ($_SESSION['promocode']== 1) {
-                        echo '<div id=totalprice>Prix Total : '. $_SESSION['totalPrice'] .'€' .'</div>';
-                    } else {
-                        if ($_SESSION['totalPrice'] > 0) {
+                        if ($total > 0) {
                             echo '<div id=totalprice>Prix Total : '. $_SESSION['totalPrice'] .'€' .'</div>';
                         } else {
                             echo '<div id=totalpricenothing>Prix Total : '. '0.00€' .'</div>';
                         }
-                    }
                     ?></h4>
             </div>
         </div>

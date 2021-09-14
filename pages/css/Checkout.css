@@ -120,10 +120,34 @@ body {
 
 #promoCode {
     position: absolute;
-    top: 534px;
-    left: 900px;
+    top: 598px;
+    left: 1221px;
     width: 251px;
     z-index: 1;
+}
+
+#promoCodeButton {
+    position: absolute;
+    top: 650px;
+    left: 1221px;
+    width: 251px;
+    z-index: 1;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border: 2px solid #FC8C04;
+    display: inline-block;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#promoCodeButton:hover {
+    background-color: #FC8C04;
+    color: white;
+}
+
+#promoForm {
+    position: absolute;
 }
 
 #articlesForm {
@@ -302,7 +326,7 @@ ul li {
     font-size: 20px;
     font-weight: 350;
     position: absolute;
-    top: 696px;
+    top: 545px;
     left: 69.5%;
 }
 
@@ -311,7 +335,7 @@ ul li {
     font-size: 20px;
     font-weight: 350;
     position: absolute;
-    top: 609px;
+    top: 545px;
     left: 69.5%;
 }
 
@@ -337,7 +361,7 @@ ul li {
     cursor: pointer;
     position: absolute;
     top: 717px;
-    left: 901px;
+    left: 898px;
     display: inline-block;
     border: 2px solid #FC8C04;
     z-index: 1;
