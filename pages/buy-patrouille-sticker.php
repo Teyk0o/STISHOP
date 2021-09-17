@@ -58,7 +58,7 @@ if (isset($_POST['setConfiguration'])) {
     </head>
     <body>
         <div id="headerMenu">
-            <a href="../Main.php">
+            <a href="../index.php">
                 <img src="../img/logo.png" id="logo">
             </a>
             <button onclick="goToMain()" class="headerButton" id="mainButton">Accueil</button>

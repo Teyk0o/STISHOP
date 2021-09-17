@@ -43,12 +43,12 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 </head>
 <body>
 <div id="headerMenu">
-    <a href="../Main.php">
+    <a href="../index.php">
         <img src="../img/logo.png" id="logo">
     </a>
-    <button onclick="location.href = '../Main.php'" class="headerButton" id="mainButton">Accueil</button>
-    <button onclick="location.href = '../Main.php'" class="headerButton" id="shopButton">Boutique</button>
-    <button onclick="location.href = '../Main.php'" class="headerButton" id="communityButton">Communauté</button>
+    <button onclick="location.href = '../index.php'" class="headerButton" id="mainButton">Accueil</button>
+    <button onclick="location.href = '../index.php'" class="headerButton" id="shopButton">Boutique</button>
+    <button onclick="location.href = '../index.php'" class="headerButton" id="communityButton">Communauté</button>
     <a href="#">
         <img src="../img/shopping-cart.png" id="panier">
     </a>
@@ -126,7 +126,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 }
 } else { ?>
     <script>
-        location.href = "../Main.php";
+        location.href = "../index.php";
     </script>
     <?php
 }

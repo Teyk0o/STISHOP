@@ -584,3 +584,27 @@ body {
     font-size: 15px;
 }
 
+#adminDashboard {
+    position: relative;
+}
+
+#accessAdminButton {
+    position: absolute;
+    top: 37px;
+    left: 77.5%;
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    width: 130px;
+    height: 35px;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    text-align: center;
+    background-color: #FC8C04;
+    color: white;
+}
+
+#accessAdminButton:hover {
+    color: black;
+    background-color: white;
+}

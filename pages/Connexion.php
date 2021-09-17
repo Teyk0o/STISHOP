@@ -80,7 +80,6 @@ if (isset($_POST['connexionForm'])) {
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
-    <meta name="description" content="La boutique des préférée STI2D">
     <title>STI2SHOP - Connexion</title>
       <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
       <link rel="stylesheet" href="../pages/css/Main.css">
@@ -89,7 +88,7 @@ if (isset($_POST['connexionForm'])) {
   </head>
   <body>
     <div id="headerMenu">
-      <a href="../Main.php">
+      <a href="../index.php">
         <img src="../img/logo.png" id="logo">
       </a>
       <button onclick="goToMain()" class="headerButton" id="mainButton">Accueil</button>

@@ -21,7 +21,7 @@ $bdd->exec("SET CHARACTER SET utf8");
     <span id="paymentBackgroundForm"></span>
     <h3 id="commandDoneTitle">Commande passée !</h3>
     <h4 id="commandDoneSubTitle">Votre commande vient tout juste d'être passée ! Il faut compter 2 à 3 jours pour la préparation et l'envoie de votre commande <br> puis 4 à 5 jours (ouvrés et en semaine) pour la livraison.</h4>
-    <button id="commandDoneButton" class="fieldForm" onclick="location.href= '../Main.php'">Retourner à l'accueil</button>
+    <button id="commandDoneButton" class="fieldForm" onclick="location.href= '../index.php'">Retourner à l'accueil</button>
 <div id="footer">
     <h4 id="footerText">STI2SHOP COPYRIGHT © 2021 - ALL RIGHTS RESERVED - MENTIONS LEGALES</h4>
 </div>

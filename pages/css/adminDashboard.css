@@ -1,0 +1,160 @@
+#logo {
+    width: 180px;
+    position: absolute;
+    left: 50px;
+}
+
+#headerMenu {
+    position: relative;
+}
+
+#welcomeUser {
+    position: absolute;
+    top: 15px;
+    left: 85%;
+    font-family: "Arial", sans-serif;
+}
+
+#username {
+    position: absolute;
+    top: 15px;
+    left: 89.8%;
+    font-family: "Arial", sans-serif;
+    color: #FC8C04;
+}
+
+#yourRank {
+    position: absolute;
+    top: 40px;
+    left: 85%;
+    font-family: "Arial", sans-serif;
+}
+
+#userRank {
+    position: absolute;
+    top: 40px;
+    left: 87.6%;
+    font-family: "Arial", sans-serif;
+    color: #FC8C04;
+}
+
+#returnToHome {
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    left: 45%;
+    top: 35px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#returnToHome:hover {
+    background-color: #FC8C04;
+    color: white;
+}
+
+.sideBar {
+    background: none;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    left: 4%;
+}
+
+#general {
+    top: 270px;
+}
+
+#sales {
+    top: 340px;
+    left: 4.3%;
+}
+
+#commands {
+    top: 410px;
+    left: 3.3%;
+}
+
+#ranks {
+    top: 480px;
+    left: 2.3%;
+}
+
+#verticalLine {
+    position: absolute;
+    left: 14%;
+    top: 200px;
+}
+
+.selectSpan {
+    border: 2px solid #FC8C04;
+    border-radius: 10px;
+    height: 25px;
+    width: 150px;
+    z-index: -1;
+}
+
+#generalSelect {
+    position: absolute;
+    top: 266px;
+    left: 1.7%;
+}
+
+#salesSelect {
+    position: absolute;
+    top: 336px;
+    left: 1.7%;
+}
+
+#commandsSelect {
+    position: absolute;
+    top: 406px;
+    left: 1.7%;
+}
+
+#ranksSelect {
+    position: absolute;
+    top: 474px;
+    left: 1.7%;
+}
+
+.graphBG {
+    background-color: #f3f3f3;
+    display: inline-block;
+    width: 435px;
+    height: 233px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: -1;
+}
+
+#visiteGraphBG {
+    top: 182px;
+    left: 20%;
+}
+
+#viewChart {
+    height: 233px;
+    width: 435px;
+    position: absolute;
+    top: 184px;
+    left: 20.1%;
+}
+
+#gainGraphBG {
+    top: 182px;
+    left: 44%;
+}
+
+#gainChart {
+    height: 233px;
+    width: 435px;
+    position: absolute;
+    top: 184px;
+    left: 44.1%;
+}

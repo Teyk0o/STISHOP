@@ -3,17 +3,17 @@ function goToConnexion() {
 }
 
 function goToMain() {
-    window.location.href = "../Main.php"
+    window.location.href = "../index.php"
 }
 
 function goToShop() {
-    window.location.href = "../Main.php"
+    window.location.href = "../index.php"
     let Shop = document.getElementById("article1");
     Shop.scrollIntoView( { block: "start", behavior: "smooth" });
 }
 
 function goToContact() {
-    window.location.href = "../Main.php"
+    window.location.href = "../index.php"
     let Contact = document.getElementById("illustration5");
     Contact.scrollIntoView( {block: "start", behavior: "smooth"} )
 }

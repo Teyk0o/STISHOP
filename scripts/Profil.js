@@ -1,13 +1,13 @@
 function goToMain() {
-    window.location.href = "../Main.php"
+    window.location.href = "../index.php"
 }
 
 function goToShop() {
-    window.location.href = "../Main.php"
+    window.location.href = "../index.php"
 }
 
 function goToContact() {
-    window.location.href = "../Main.php"
+    window.location.href = "../index.php"
 }
 
 function goToProfil() {

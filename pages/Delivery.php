@@ -34,6 +34,8 @@ if (isset($_POST['submitFormDelivery'])) {
             'id' => $_GET['id']
         ];
 
+        date_default_timezone_set('Europe/Paris');
+        $todayDate = date("d-m-Y");
         $saleId = "STI" . rand(1000, 9999);
         $buyerName = htmlspecialchars($_POST['Nom']);
         $buyerFirstName = htmlspecialchars($_POST['Prenom']);
@@ -46,8 +48,8 @@ if (isset($_POST['submitFormDelivery'])) {
             $json[] = $row;
             $articlesInfo = json_encode($json);
         }
-        $insertsaleinfo = $bdd->prepare("INSERT INTO sales (id, buyerName, buyerFirstName, buyerAdress, articleList, totalPrice, done) VALUE (?, ?, ?, ?, ?, ?, 'NO')");
-        $insertsaleinfo->execute(array($saleId, $buyerName, $buyerFirstName, $buyerAdress, $articlesInfo, $totalPrice));
+        $insertsaleinfo = $bdd->prepare("INSERT INTO sales (id, buyerName, buyerFirstName, buyerAdress, articleList, totalPrice, date, done) VALUE (?, ?, ?, ?, ?, ?, ?, 'NO')");
+        $insertsaleinfo->execute(array($saleId, $buyerName, $buyerFirstName, $buyerAdress, $articlesInfo, $totalPrice , $todayDate));
 
         $insertdeliveryinfo = $bdd->prepare("UPDATE membres SET name=:name, firstname=:firstname, adress=:adress, city=:city, zipCode=:zipCode WHERE id=:id");
         $insertdeliveryinfo->execute($data);
